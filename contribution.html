@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vissionary Vault Contributions</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #6e157c;
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.total {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contributor {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.name {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.bar {
+    background: #ddd;
+    height: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.percent {
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+/* BUTTONS */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.btn-celebrate {
+    background: #28a745;
+    color: white;
+}
+
+.btn-celebrate:hover {
+    background: #218838;
+}
+
+.btn-winner {
+    background: #6f42c1;
+    color: white;
+}
+
+.btn-winner:hover {
+    background: #59339d;
+}
+
+/* MESSAGE BOX */
+.message {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+    display: none;
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+/* MAGIC INSTRUCTION */
+.magic-msg {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #ff6600;
+}
+</style>
+</head>
+
+<body>
+
+<h2>VISSIONARY VAULT 2025 CONTRIBUTION WRAPPED</h2>
+
+<div class="total">
+    Expected Total: 1200 <br>
+    Collected: <span id="collected"></span>
+</div>
+
+<div id="list"></div>
+
+<!-- MAGIC INSTRUCTION -->
+<div class="magic-msg">✨ Click the buttons to see magic! ✨</div>
+
+<!-- BUTTON 1 -->
+<button class="btn-celebrate" onclick="showFlowers()">
+    Celebrate Contributions 🌸
+</button>
+
+<!-- BUTTON 2 -->
+<button class="btn-winner" onclick="showWinner()">
+    Show Winner 🏆
+</button>
+
+<!-- MESSAGE AREA -->
+<div class="message" id="message"></div>
+
+<script>
+// 🎯 EXPECTED TOTAL
+const expectedTotal = 1200;
+
+
+// 🔒 PRE-CODED DATA
+const contributions = [
+    { name: "Statistician Ixcel", amount: 900 },
+    { name: "Entreprenuer Rhoda", amount: 700 },
+    { name: "Prof Fidel", amount: 400 },
+    { name: "Statistician Vinny", amount: 1100},
+    { name: "General Sael", amount: 1100 },
+    { name: "Dr.Charles", amount: 300 },
+    { name: "Dr.Vivian", amount: 400 },
+     { name: "Moureen mdogo", amount: 100 },
+    { name: "Mhesh Felix", amount: 500 },
+    { name: "Faith Melvin", amount: 200 }, 
+    { name: "Esther", amount: 300 },
+    { name: "Jose", amount: 200 }, 
+    { name: "Linet", amount: 300 },
+    { name: "Bodo the Great", amount: 200 }, 
+    { name: "Eng Shantel", amount: 300 },
+    { name: "Sheila", amount: 200 }, 
+    { name: "Sophie Waghason", amount: 700 },
+    { name: "EShtonaire", amount: 200 }, 
+    { name: "Faith", amount: 300 },
+    { name: "Moureen IT expert", amount: 500 }, 
+    
+];
+
+// calculate collected total
+const collected = contributions.reduce((sum, c) => sum + c.amount, 0);
+document.getElementById("collected").textContent = collected;
+
+// color logic
+function getColor(percent) {
+    if (percent < 40) return "red";
+    if (percent < 70) return "orange";
+    return "green";
+}
+
+// render contributors
+const container = document.getElementById("list");
+
+contributions.forEach(c => {
+    const percent = Math.min((c.amount / expectedTotal) * 100, 100).toFixed(1);
+
+    container.innerHTML += `
+        <div class="contributor">
+            <div class="name">${c.name} — ${c.amount}</div>
+            <div class="bar">
+                <div class="fill" style="width:${percent}%; background:${getColor(percent)}"></div>
+            </div>
+            <div class="percent">${percent}% of expected total</div>
+        </div>
+    `;
+});
+
+// ✅ BUTTON FUNCTIONS (WORKING)
+function showFlowers() {
+    const msg = document.getElementById("message");
+    msg.style.display = "block";
+    msg.textContent = "🌸🌼🌺 Thank you team for the amazing work! 🌺🌼🌸. The group has been an awesome one";
+}
+
+function showWinner() {
+    const msg = document.getElementById("message");
+    msg.style.display = "block";
+    msg.textContent = "🏆 Prof Fidel is the winner. Thanks for supporting me guys 🏆";
+}
+</script>
+
+</body>
+</html>
